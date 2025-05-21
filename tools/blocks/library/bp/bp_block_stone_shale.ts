@@ -1,0 +1,29 @@
+import { BlockBuilder } from "../../BlockBuilder.ts";
+import { blockRegistry } from "../../BlockRegistry.ts";
+
+/**
+ * @name blockStoneShale
+ * @description TODO: Add description for block badger:block_stone_shale
+ * @example
+ * // Example usage:
+ * import { blockStoneShale } from "legends/core/crafter/blocks/BlockRegistry.ts";
+ */
+
+const blockStoneShale = new BlockBuilder(
+  "badger:block_stone_shale",
+  "badger_stone",
+)
+  .setBlockShape({
+    shape: "cube",
+    directionalTexture: false,
+    directionalShape: false,
+  })
+  .setDestroyTime(10)
+  .setBlockDamageReceiverMaterial("block")
+  .setTerrainType("stone")
+  .setBlockType(["stone"])
+  .build();
+
+blockRegistry.addBlock("badger:block_stone_shale", blockStoneShale);
+
+export { blockStoneShale };
