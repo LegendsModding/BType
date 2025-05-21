@@ -1,0 +1,73 @@
+import { PIGLIN_FactionNames } from "scripts_bType/FACTION_NAMES.ts";
+import {
+  FACTION_ACTION_BUILD_DEFENSIVE_OUTPOST,
+  FACTION_ACTION_BUILD_OFFENSIVE_OUTPOST,
+  FACTION_ACTION_BUILD_NEAR_BASE,
+  FACTION_ACTION_BUILD_NEW_OUTPOST,
+  FACTION_ACTION_UPGRADE_BASE,
+  FACTION_ACTION_OOPS,
+  FACTION_ACTION_BUILD_FAR_BASE,
+  FACTION_ACTION_BUILD_DEFENSIVE_OUTPOST_TRIPLE,
+  FACTION_ACTION_BUILD_OFFENSIVE_OUTPOST_DOUBLE,
+  FACTION_ACTION_BUILD_NEAR_BASE_DOUBLE,
+  FACTION_ACTION_UPGRADE_BASE_DOUBLE,
+  FACTION_ACTION_OOPS_DOUBLE,
+  FACTION_ACTION_CLAIM_AREA,
+  FACTION_ACTION_ATTACK_VILLAGE_V2,
+  FACTION_ACTION_ESTABLISH,
+  FACTION_ACTION_ATTACK_VILLAGE_V2_DOUBLE,
+  FACTION_ACTION_ATTACK_VILLAGE_V2_ATTACK_BOSS,
+  FACTION_ACTION_BOSS_OCCUPATION,
+} from "scripts_bType/invasion/FACTION_Actions.ts";
+
+import { COUNTER_Generic } from "./COUNTER_Generic.ts";
+import { GLOBAL_TRACKER } from "./CountersTriggersConst.ts";
+
+/**
+ * Collection of valid invasion action identifiers.
+ * @readonly
+ * @see FACTION_Actions.ts
+ * @remarks
+ * Contains all recognized invasion action types for validation and counter configuration. Extendable through direct array modification.
+ */
+export const ALL_INVASION_ACTIONS = [
+  // All invasion actions
+  FACTION_ACTION_BUILD_DEFENSIVE_OUTPOST,
+  FACTION_ACTION_BUILD_OFFENSIVE_OUTPOST,
+  FACTION_ACTION_BUILD_NEAR_BASE,
+  FACTION_ACTION_BUILD_NEW_OUTPOST,
+  FACTION_ACTION_UPGRADE_BASE,
+  FACTION_ACTION_OOPS,
+  FACTION_ACTION_BUILD_FAR_BASE,
+  FACTION_ACTION_BUILD_DEFENSIVE_OUTPOST_TRIPLE,
+  FACTION_ACTION_BUILD_OFFENSIVE_OUTPOST_DOUBLE,
+  FACTION_ACTION_BUILD_NEAR_BASE_DOUBLE,
+  FACTION_ACTION_UPGRADE_BASE_DOUBLE,
+  FACTION_ACTION_OOPS_DOUBLE,
+  FACTION_ACTION_CLAIM_AREA,
+  FACTION_ACTION_ATTACK_VILLAGE_V2,
+  FACTION_ACTION_ESTABLISH,
+  FACTION_ACTION_ATTACK_VILLAGE_V2_DOUBLE,
+  FACTION_ACTION_ATTACK_VILLAGE_V2_ATTACK_BOSS,
+  FACTION_ACTION_BOSS_OCCUPATION,
+];
+
+/**
+ * Counter tracking days passed across invasion actions and factions.
+ * @readonly
+ * @remarks
+ * Monitors temporal progression of invasion activities. Includes GLOBAL_TRACKER for cross-faction analytics. Persists through game sessions.
+ */
+export const COUNTER_InvasionActionDaysPassed = COUNTER_Generic(
+  "gv_inv_manager_days_passed",
+  0,
+  [
+    PIGLIN_FactionNames.horderunners,
+    PIGLIN_FactionNames.unbreakables,
+    PIGLIN_FactionNames.rotters,
+    PIGLIN_FactionNames.frost,
+    PIGLIN_FactionNames.blaze,
+    GLOBAL_TRACKER,
+  ],
+  ALL_INVASION_ACTIONS,
+);
